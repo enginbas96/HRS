@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(to top left, #3399ff 0%, #66ccff 100%);
+    font-family: Arial, sans-serif;
+}
+.ustBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ff0000;
+}
+.logoDiv {
+    background-color: #ff0000;
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #000;
+    max-width: 50%;
+}
+.sayfalarDiv {
+    background-color: #00ff00;
+    flex: 1;
+    margin: 1px;
+
+    /* Ortalandı */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 10%;
+    height: 35px;
+}
+.girisButtonDiv {
+    background-color: #000000;
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #000;
+    max-width: 10%;
+}
+.kaydolDiv {
+    background-color: #ffffff;
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #000;
+    max-width: 10%;
+}
+.ortaAlan {
+    background-color: #66ccff;
+
+}
+
+.girisDiv {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #000099;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffff99;
+}
+
+input[type="submit"] {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #0000ff;
+}
+h2{
+    text-align: center;
+}
