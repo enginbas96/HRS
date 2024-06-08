@@ -1,0 +1,52 @@
+#saatButonlari {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.saatButon {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 47px;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+    background-color: #99ccff;
+}
+
+.saatButon[disabled] {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 47px;
+    font-size: 16px;
+    color: black;
+    background-color: grey;
+}
+
+.saatButon:focus {
+    outline: none;
+}
+
+.saatButon:hover {
+    border-color: #333;
+    color: black;
+    background-color: lawngreen;
+}
+
+.saatButon[disabled]:hover {
+    border-color: transparent;
+    color: black;
+    background-color: grey;
+}
+
+.randevuAlForm {
+    background-color: #f5f5dc;
+    border: 30px solid transparent;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <title>Kaydol | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
+    <title>Giriş Yap | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -19,6 +19,7 @@
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
 <!-- PRE LOADER -->
 <section class="preloader">
     <div class="spinner">
@@ -41,6 +42,7 @@
                 <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 6:00 - 22:00 (Pzrt-Cuma)</span>
                 <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">bilgi@abchastane.com</a></span>
             </div>
+
         </div>
     </div>
 </header>
@@ -69,7 +71,7 @@
                     </ul>
                 </li>
                 <li><a href="{{route("iletisimSayfasi")}}" class="smoothScroll">İletişim</a></li>
-                <li class="appointment-btn"><a href="{{route('girisSayfasi')}}">Giriş Yap</a></li>
+                <li class="appointment-btn"><a href="{{route('kaydolSayfasi')}}">Kayıt Ol</a></li>
             </ul>
         </div>
     </div>
@@ -80,72 +82,56 @@
     </script>
 @endauth
 @guest()
-    <!-- Kayıt Oluştur -->
+    <!-- Giriş Yap -->
     <section id="appointment" data-stellar-background-ratio="3">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-6 col-sm-6">
                     <img src="images/giris.jpg" class="img-responsive" alt="">
                 </div>
+
                 <div class="col-md-6 col-sm-6">
                     <!-- CONTACT FORM HERE -->
-                    <form id="appointment-form" role="form" method="post" action="{{route('kaydolSayfasi')}}"  onsubmit="return kontrolEt();">
+                    <form id="appointment-form" role="form" method="POST" action="{{route('girisSayfasi')}}" onsubmit="return kontrolEt();">
                         @csrf
                         <!-- SECTION TITLE -->
-
                         <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
                             <div style="margin-top: 20px;"></div>
-                            @if($errors->has('tc'))
+                            @if($errors->has('kullanici'))
                                 <div style="color: red;" class="alert alert-danger">
-                                    {{ $errors->first('tc') }}
+                                    {{ $errors->first('kullanici') }}
                                 </div>
                             @endif
-                            <div style="margin-top: 10px;"></div>
-                            <h2>Kayıt Oluştur</h2>
+                                <div style="margin-top: 10px;"></div>
+                            <h2>Giriş Yap</h2>
                         </div>
-                        <div class="wow fadeInUp" data-wow-delay="0.8s">
-                            <div class="col-md-6 col-sm-6">
+                        <div class="deneme-form">
+                            <!-- TC ve şifre isteyen kutular -->
+                            <div class="form-group">
                                 <label for="tc">TC Kimlik Numaranız</label>
-                                <input type="text" class="form-control" id="tc" name="tc" placeholder="TC kimlik no" onkeypress="rakamKontrol(event)" onblur="rakamKontrol(event)" maxlength="11">
+                                <input type="text" class="form-control" id="tc" name="tc" placeholder="TC kimlik no" maxlength="11" onkeypress="rakamKontrol(event)" onblur="rakamKontrol(event)">
                             </div>
-                            <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
                                 <label for="password">Şifreniz</label>
                                 <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="Şifreniz">
+                                       placeholder="Şifreniz" maxlength="32">
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <label for="ad">Adınız</label>
-                                <input type="text" class="form-control" id="ad" name="ad" placeholder="Adınız" onkeypress="karakterKontrol(event)" onblur="karakterKontrol(event)" maxlength="32">
+                            <div class="form-group">
+                                <button type="submit" class="form-control" id="cf-submit" name="submit">Giriş Yap
+                                </button>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <label for="soyad">Soyadınız</label>
-                                <input type="text" class="form-control" id="soyad" name="soyad" placeholder="Soyadınız" onkeypress="karakterKontrol(event)" onblur="karakterKontrol(event)" maxlength="32">
+                            <div class="form-group">
+                                <a href="{{route('sifremiUnuttumSayfasi')}}" class="forgot-password">Şifrenizi mi unuttunuz?</a>
+                                <br><br>
+                                <a href="{{ url('/') }}" class="anaSayfa">Anasayfaya dön</a>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="eposta" name="eposta"
-                                       placeholder="Mail adresiniz">
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <label for="dogumyili">Doğum Yılınız</label>
-                                <input type="text" class="form-control" id="dogumyili" name="dogumyili"
-                                       placeholder="Doğum yılı" onkeypress="rakamKontrol(event)" onblur="rakamKontrol(event)" maxlength="4">
-                            </div>
-                            <div>
-                                <label for="cinsiyet">Cinsiyetiniz</label>
-                                <br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="cinsiyet" value="Kadın"><br>
-                                    Kadın</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="cinsiyet" value="Erkek"><br>
-                                    Erkek</label>
-                            </div>
-                            <br>
-                            <button type="submit" class="form-control" id="cf-submit" name="submit">Kayıt Ol</button>
-                            <div class="deneme-form">
-                                <a href="{{route('girisSayfasi')}}" class="forgot-password">Zaten bir hesabınız var mı?
-                                    Giriş yapın.</a>
+                            <div class="form-group">
+                                <p>Şifrenizi kimseyle paylaşmayın. Şifreniz, kişisel bilgilerinizi ve hesaplarınızı
+                                    korumak için önemli bir güvenlik unsuru olduğundan, lütfen güvenliğiniz için
+                                    şifrenizi hiç kimseyle paylaşmayın veya başkalarının erişimine izin vermeyin.
+                                    Ayrıca, şifrenizi belirli aralıklarla güncelleyerek hesap güvenliğinizi
+                                    artırabilirsiniz.</p>
                             </div>
                         </div>
                     </form>
@@ -158,18 +144,21 @@
 <footer data-stellar-background-ratio="5">
     <div class="container">
         <div class="row">
+
             <div class="col-md-4 col-sm-4">
                 <div class="footer-thumb">
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">İletişim Bilgileri</h4>
                     <p>Sağlığınız bizim önceliğimizdir. Size en iyi sağlık hizmetini sunabilmek için her zaman
                         buradayız. Sorularınızı yanıtlamak, randevu almak ya da önerilerinizi iletmek için bizimle
                         iletişime geçebilirsiniz.</p>
+
                     <div class="contact-info">
                         <p><i class="fa fa-phone"></i> (216)555-5-555</p>
                         <p><i class="fa fa-envelope-o"></i> <a href="#">bilgi@abchastane.com</a></p>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 col-sm-4">
                 <div class="footer-thumb">
                     <div class="opening-hours">
@@ -179,6 +168,7 @@
                         <p>Pazar : <span>Kapalı</span></p>
                         <p>Acil servisimiz her zaman açıktır.</p>
                     </div>
+
                     <ul class="social-icon">
                         <li><a href="https://www.facebook.com/" class="fa fa-facebook-square" attr="facebook icon"></a>
                         </li>
@@ -187,6 +177,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="col-md-12 col-sm-12 border-top">
                 <div class="col-md-4 col-sm-6">
                     <div class="copyright-text">
@@ -206,9 +197,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </footer>
+
 <!-- SCRIPTS -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -218,6 +211,7 @@
 <script src="js/smoothscroll.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
-<script src="js/kaydolJS.js"></script>
+<script src="js/girisJS.js"></script>
+
 </body>
 </html>

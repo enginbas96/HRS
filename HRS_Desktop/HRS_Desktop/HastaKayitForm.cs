@@ -86,7 +86,7 @@ namespace HRS_Desktop
                 {
                     baglanti.Close();
                     baglanti.Open();
-                    string kayitKomut = "INSERT INTO `hasta` (`tc`, `sifre`, `ad`, `soyad`, `eposta`, `dogumyili`, `cinsiyet`) VALUES ('" + hastaTcNoTXT.Text + "','" + defaultSifre + "','" + hastaAdTXT.Text + "','" + hastaSoyadTXT.Text + "','" + hastaMailTXT.Text + "','" + hastaDogumYiliTXT.Text + "','" + cinsiyet + "');";
+                    string kayitKomut = "INSERT INTO `hasta` (`tc`, `password`, `ad`, `soyad`, `eposta`, `dogumyili`, `cinsiyet`) VALUES ('" + hastaTcNoTXT.Text + "','" + defaultSifre + "','" + hastaAdTXT.Text + "','" + hastaSoyadTXT.Text + "','" + hastaMailTXT.Text + "','" + hastaDogumYiliTXT.Text + "','" + cinsiyet + "');";
                     MySqlCommand ekle = new MySqlCommand(kayitKomut, baglanti);
                     ekle.ExecuteNonQuery();
                     baglanti.Close();

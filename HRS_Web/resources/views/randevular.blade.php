@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>İletişim | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
+    <title>Randevularım | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -36,9 +36,15 @@
                 <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 6:00 - 22:00 (Pazartesi-Cuma)</span>
                 <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">bilgi@abcsaglik.com</a></span>
             </div>
+
         </div>
     </div>
 </header>
+@guest()
+    <script>
+        window.location.href = "{{ route('girisSayfasi') }}";
+    </script>
+@endguest
 @auth()
     <!-- MENU -->
     <section class="navbar navbar-default navbar-static-top" role="navigation">
@@ -65,46 +71,37 @@
                         </ul>
                     </li>
                     <li><a href="{{route("iletisimSayfasi")}}" class="smoothScroll">İletişim</a></li>
-                    <li class="appointment-btn"><a href="{{route("randevularSayfasi")}}">Randevularım</a></li>
+                    <li class="appointment-btn"><a href="{{route("randevuOlusturSayfasi")}}">Randevu Oluştur</a></li>
                     <li class="appointment-btn1"><a href="{{route('cikis')}}">Çıkış Yap</a></li>
                 </ul>
             </div>
         </div>
     </section>
-@endauth
-@guest()
-    <!-- MENU -->
-    <section class="navbar navbar-default navbar-static-top" role="navigation">
+    <section id="appointment" data-stellar-background-ratio="3">
         <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                </button>
-                <!-- lOGO TEXT HERE -->
-                <a href="{{route("anaSayfa")}}" class="navbar-brand"><i class="fa fa-h-square"></i>er şeyden önce sağlık</a>
-            </div>
-            <!-- MENU LINKS -->
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{route("anaSayfa")}}" class="smoothScroll">Anasayfa</a></li>
-                    <li><a href="{{route("hakkimizdaSayfasi")}}" class="smoothScroll">Hakkımızda</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bize Dair <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{route("hastanelerSayfasi")}}" class="smoothScroll">Hastanelerimiz</a></li>
-                            <li><a href="{{route("doktorlarSayfasi")}}" class="smoothScroll">Uzman Kadromuz</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route("iletisimSayfasi")}}" class="smoothScroll">İletişim</a></li>
-                    <li class="appointment-btn"><a href="{{route("kaydolSayfasi")}}">Kayıt Ol</a></li>
-                    <li class="appointment-btn"><a href="{{route("girisSayfasi")}}">Giriş Yap</a></li>
-                </ul>
+            <div class="row">
+                @if($randevular->isEmpty())
+                    <div class="col-md-12">
+                        <h2>Hiçbir randevunuz bulunmamaktadır</h2>
+                        <h4><a href="{{route('randevuOlusturSayfasi')}}">Randevu oluşturmak için buraya tıklayınız</a></h4>
+                    </div>
+                @else
+                    @foreach($randevular as $randevuBilgileri)
+                        <div class="col-md-4">
+                            <div class="appointment-item-randevular">
+                                <p><strong>Randevu Tarihi : </strong> {{ $randevuBilgileri->tarih }}</p>
+                                <p><strong>Randevu Saati : </strong> {{ $randevuBilgileri->saat }}</p>
+                                <p><strong>Poliklinik : </strong> {{ $randevuBilgileri->poliklinik }}</p>
+                                <p><strong>Doktorun Adı : </strong>{{ $randevuBilgileri->doktorAd }}</p>
+                                <p><strong>Hastane : </strong> {{ $randevuBilgileri->hastaneAdi }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
-@endguest
+@endauth
 <!-- FOOTER -->
 <footer data-stellar-background-ratio="5">
     <div class="container">
@@ -112,16 +109,13 @@
             <div class="col-md-4 col-sm-4">
                 <div class="footer-thumb">
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">İletişim Bilgileri</h4>
+                    <p>Hızlı ve etkili iletişim için bize ulaşın. Sağlığınızla ilgili herhangi bir sorunuz, öneriniz
+                        veya isteğiniz mi var? Size yardımcı olmaktan mutluluk duyarız.</p>
+
                     <div class="contact-info">
                         <p><i class="fa fa-phone"></i> 0-(216)-444-4-444</p>
                         <p><i class="fa fa-envelope-o"></i> <a href="#">bilgi@abcsaglik.com</a></p>
                     </div>
-                    <ul class="social-icon">
-                        <li><a href="https://www.facebook.com" class="fa fa-facebook-square" attr="facebook icon"></a>
-                        </li>
-                        <li><a href="https://www.x.com" class="fa fa-twitter"></a></li>
-                        <li><a href="https://www.instagra.com" class="fa fa-instagram"></a></li>
-                    </ul>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4">
@@ -131,16 +125,15 @@
                         <p>Pazartesi - Cuma <span>06:00 - 22:00</span></p>
                         <p>Cumartesi <span>09:00 - 20:00</span></p>
                         <p>Pazar <span>Kapalı</span></p>
+                        <p>Acil Servisimiz 7/24 Hizmetinizdedir</p>
                     </div>
+                    <ul class="social-icon">
+                        <li><a href="https://www.facebook.com" class="fa fa-facebook-square" attr="facebook icon"></a>
+                        </li>
+                        <li><a href="https://www.x.com" class="fa fa-twitter"></a></li>
+                        <li><a href="https://www.instagra.com" class="fa fa-instagram"></a></li>
+                    </ul>
                 </div>
-            </div>
-            <div>
-
-                <section id="google-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1505.2061877537258!2d28.985607056023674!3d41.01623319999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDAwJzU4LjAiTiAyOMKwNTknMTMuNiJF!5e0!3m2!1str!2str!4v1717243220473!5m2!1str!2str"
-                        width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </section>
             </div>
             <div class="col-md-12 col-sm-12 border-top">
                 <div class="col-md-4 col-sm-6">
@@ -171,5 +164,9 @@
 <script src="js/smoothscroll.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/randevularSayfasi.js"></script>
 </body>
 </html>
+
+
+

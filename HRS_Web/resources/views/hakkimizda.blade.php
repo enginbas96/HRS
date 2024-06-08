@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>İletişim | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
+    <title>Hakkımızda | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -105,6 +105,56 @@
         </div>
     </section>
 @endguest
+<section id="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <div class="about-info">
+                    <h2 class="wow fadeInUp" data-wow-delay="0.6s">ABC Özel Sağlık Hizmetleri'ne Hoş Geldiniz </h2>
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+                        <p>1996 yılında İstanbul'da kurulan ABC Özel Sağlık Hizmetleri, sağlık sektöründe 25 yılı aşkın
+                            deneyimiyle Türkiye'nin en önde gelen sağlık kuruluşlarından biri olmuştur. Hastanemiz,
+                            modern tıbbi cihazlar ve uzman kadrosuyla, her zaman en kaliteli sağlık hizmetini sunmayı
+                            hedeflemektedir.</p>
+                        <p>Kuruluşumuzun ilk yıllarında, sadece İstanbul'da tek bir hastane ile hizmet vermeye başladık.
+                            Ancak yıllar içerisinde, kaliteli ve güvenilir sağlık hizmetlerimiz sayesinde hızla
+                            büyüyerek, Türkiye genelinde yaygın bir sağlık ağı oluşturduk. Bugün itibariyle 20 farklı
+                            ilde, toplamda 25 hastane ile geniş bir hizmet yelpazesi sunuyoruz.</p>
+                        <p>Hastanelerimizde, her biri alanında uzman doktorlar, hemşireler ve sağlık personeli görev
+                            almaktadır. Ayrıca, en son teknolojik gelişmeleri takip ederek, hastalarımıza en güncel ve
+                            etkili tedavi yöntemlerini sunmaktayız. Geniş hizmet yelpazemiz içerisinde; acil servis,
+                            genel cerrahi, kardiyoloji, onkoloji, kadın doğum, çocuk sağlığı ve hastalıkları, ortopedi
+                            gibi birçok branş bulunmaktadır.</p>
+                        <p>ABC Özel Sağlık Hizmetleri olarak, sadece tedavi hizmetleriyle sınırlı kalmayıp, aynı zamanda
+                            sağlığın korunması ve iyileştirilmesi için de çeşitli programlar ve etkinlikler
+                            düzenliyoruz. Sağlık seminerleri, bilinçlendirme kampanyaları ve düzenli kontroller gibi
+                            hizmetlerimizle, halkımızın sağlık bilincini artırmayı hedefliyoruz.</p>
+                        <p>Hastalarımızın memnuniyeti bizim için en büyük önceliktir. Bu nedenle, her hastanemizde hasta
+                            odaklı hizmet anlayışını benimseyerek, her hastamızın bireysel ihtiyaçlarına özel çözümler
+                            sunmaktayız. ABC Özel Sağlık Hizmetleri, sağlığınıza verdiğiniz önemin bilincinde olarak,
+                            sizin ve sevdiklerinizin sağlığını en üst düzeyde korumak için buradayız.</p>
+                        <p>Misyonumuz, toplumun her kesimine nitelikli sağlık hizmeti sunmak ve sağlık alanında öncü bir
+                            kuruluş olmaktır. Vizyonumuz ise, global sağlık standartlarını Türkiye'ye taşıyarak,
+                            uluslararası alanda da tanınan ve tercih edilen bir sağlık kuruluşu olmaktır.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <figure class="profile wow fadeInUp" data-wow-delay="1s">
+                        <img src="images/author-image.jpg" class="img-responsive" alt="">
+                        <figcaption>
+                            <h3>Dr. Hasan YORGUN</h3>
+                            <p>Başhekim</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<br>
 <!-- FOOTER -->
 <footer data-stellar-background-ratio="5">
     <div class="container">
@@ -112,16 +162,13 @@
             <div class="col-md-4 col-sm-4">
                 <div class="footer-thumb">
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">İletişim Bilgileri</h4>
+                    <p>Hızlı ve etkili iletişim için bize ulaşın. Sağlığınızla ilgili herhangi bir sorunuz, öneriniz
+                        veya isteğiniz mi var? Size yardımcı olmaktan mutluluk duyarız.</p>
+
                     <div class="contact-info">
                         <p><i class="fa fa-phone"></i> 0-(216)-444-4-444</p>
                         <p><i class="fa fa-envelope-o"></i> <a href="#">bilgi@abcsaglik.com</a></p>
                     </div>
-                    <ul class="social-icon">
-                        <li><a href="https://www.facebook.com" class="fa fa-facebook-square" attr="facebook icon"></a>
-                        </li>
-                        <li><a href="https://www.x.com" class="fa fa-twitter"></a></li>
-                        <li><a href="https://www.instagra.com" class="fa fa-instagram"></a></li>
-                    </ul>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4">
@@ -131,16 +178,15 @@
                         <p>Pazartesi - Cuma <span>06:00 - 22:00</span></p>
                         <p>Cumartesi <span>09:00 - 20:00</span></p>
                         <p>Pazar <span>Kapalı</span></p>
+                        <p>Acil Servisimiz 7/24 Hizmetinizdedir</p>
                     </div>
+                    <ul class="social-icon">
+                        <li><a href="https://www.facebook.com" class="fa fa-facebook-square" attr="facebook icon"></a>
+                        </li>
+                        <li><a href="https://www.x.com" class="fa fa-twitter"></a></li>
+                        <li><a href="https://www.instagra.com" class="fa fa-instagram"></a></li>
+                    </ul>
                 </div>
-            </div>
-            <div>
-
-                <section id="google-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1505.2061877537258!2d28.985607056023674!3d41.01623319999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDAwJzU4LjAiTiAyOMKwNTknMTMuNiJF!5e0!3m2!1str!2str!4v1717243220473!5m2!1str!2str"
-                        width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </section>
             </div>
             <div class="col-md-12 col-sm-12 border-top">
                 <div class="col-md-4 col-sm-6">
@@ -173,3 +219,6 @@
 <script src="js/custom.js"></script>
 </body>
 </html>
+
+
+
