@@ -83,7 +83,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+
                     <h2>Randevu Al</h2>
+                    <div style="margin-top: 20px;"></div>
+                    @if($errors->has('randevuMevcut'))
+                        <div style="color: red;" class="alert alert-danger">
+                            {{ $errors->first('randevuMevcut') }}
+                        </div>
+                    @endif
+                    <div style="margin-top: 10px;"></div>
                     <form action="{{ route('randevuOlusturSayfasi') }}" method="POST">
                         @csrf
                         <div class="randevuAlForm">

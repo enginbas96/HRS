@@ -79,7 +79,7 @@
     </section>
     <section id="appointment" data-stellar-background-ratio="3">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: 40px">
                 @if($randevular->isEmpty())
                     <div class="col-md-12">
                         <h2>Hiçbir randevunuz bulunmamaktadır</h2>

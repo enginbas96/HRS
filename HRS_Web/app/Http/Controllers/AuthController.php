@@ -76,7 +76,7 @@ class AuthController extends Controller
             $randevuTarihi = $randevuTarihiPart[2] . '.' . $randevuTarihiPart[1] . '.' . $randevuTarihiPart[0];
             $randevu = DB::table('randevular')->where('hastaTC', $hastaTC)->where('hastaneAdi', $hastane)->where('doktorTC', $hekimTC)->where('tarih', $randevuTarihi)->where('poliklinik', $poliklinik)->first();
             if ($randevu) {
-                dd("RANDEVU MEVCUT");
+                return back()->withErrors(['randevuMevcut' => 'Sizin zaten aynı gün randevunuz bulunmaktadır.']);
 
             } else {
                 $data = [
