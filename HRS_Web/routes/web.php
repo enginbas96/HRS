@@ -28,6 +28,9 @@ Route::post('Randevu-Al', [AuthController::class, 'randevuOlustur'])->name('rand
 Route::get('Sifremi-Unuttum', [MailController::class, 'Gonder'])->name('sifremiUnuttumSayfasi');
 Route::post('Sifremi-Unuttum', [MailController::class, 'Gonder'])->name('sifremiUnuttumSayfasi');
 
+Route::get('Profilim', [AuthController::class, 'profilAyarları'])->name('profilSayfasi');
+Route::post('Profilim', [AuthController::class, 'profilAyarları'])->name('profilSayfasi');
+
 //Sayfa Routes
 Route::get('Iletisim', [AuthController::class, 'IletisimMetod'])->name('iletisimSayfasi');
 Route::get('Hakkimizda', [AuthController::class, 'HakkimizdaMetod'])->name('hakkimizdaSayfasi');

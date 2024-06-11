@@ -13,6 +13,11 @@ $('#poliklinikler').prop('disabled', true);
 $('#randevuTarihi').prop('disabled', true);
 $('#randevuTarihi').val('');
 $('.saatButon').prop('disabled', true);
+$('#cf-submit').prop('disabled', true);
+
+const submitButton = document.getElementById('cf-submit');
+submitButton.textContent = 'Lütfen randevu istediğiniz ili seçiniz.';
+
 
 
 $('#iller').on('change', function () {
@@ -31,6 +36,8 @@ $('#iller').on('change', function () {
     $('#randevuTarihi').prop('disabled', true);
     $('#randevuTarihi').val('');
     $('.saatButon').prop('disabled', true);
+    $('#cf-submit').prop('disabled', true);
+    submitButton.textContent = 'Lütfen randevu istediğiniz hastaneyi seçiniz.';
 });
 
 
@@ -49,6 +56,8 @@ $('#hastaneler').on('change', function () {
     $('#randevuTarihi').prop('disabled', true);
     $('#randevuTarihi').val('');
     $('.saatButon').prop('disabled', true);
+    $('#cf-submit').prop('disabled', true);
+    submitButton.textContent = 'Lütfen randevu istediğiniz polikliniği seçiniz.';
 });
 
 
@@ -67,6 +76,8 @@ $('#poliklinikler').on('change', function () {
     $('#randevuTarihi').prop('disabled', true);
     $('#randevuTarihi').val('');
     $('.saatButon').prop('disabled', true);
+    $('#cf-submit').prop('disabled', true);
+    submitButton.textContent = 'Lütfen randevu istediğiniz doktoru seçiniz.';
 });
 
 $('#hekimler').on('change', function () {
@@ -76,6 +87,8 @@ $('#hekimler').on('change', function () {
     $('#randevuTarihi').prop('disabled', false);
     $('#randevuTarihi').val('');
     $('.saatButon').prop('disabled', true);
+    $('#cf-submit').prop('disabled', true);
+    submitButton.textContent = 'Lütfen randevu istediğiniz tarihi seçiniz.';
 });
 
 $(document).ready(function () {
@@ -103,6 +116,7 @@ $(document).ready(function () {
         var hastane_ad = $('#hastaneler').val();
         var poliklinik_ad = $('#poliklinikler').val();
         var hekim_tc = $('#hekimler').val();
+        submitButton.textContent = 'Lütfen randevu istediğiniz saati seçiniz.';
         $('.saatButon').prop('disabled', false);
         $.get("/E", {
             tarih: formattedDate,
@@ -132,10 +146,14 @@ $(document).ready(function () {
 
 
 var hiddenInput = document.getElementById('saat');
+
 function saatAl(clickedButton) {
     hiddenInput.value = clickedButton.value;
     saatButonRengiDegistir(clickedButton);
+    submitButton.textContent = 'Randevu Al';
+    $('#cf-submit').prop('disabled', false);
 }
+
 function saatButonRengiDegistir(clickedButton) {
     $('.saatButon').css('background-color', '#99ccff');
     $('.saatButon').css('border-color', 'transparent');
@@ -148,5 +166,53 @@ function saatButonRengiDegistir(clickedButton) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const ilSelect = document.getElementById('iller');
+    const hastaneSelect = document.getElementById('hastaneler');
+    const poliklinikSelect = document.getElementById('poliklinikler');
+    const hekimSelect = document.getElementById('hekimler');
+    const randevuTarihiInput = document.getElementById('randevuTarihi');
+    const saatInput = document.getElementById('saat');
 
+    form.addEventListener('submit', function (event) {
+        let valid = true;
+        let errorMessage = 'Lütfen aşağıdaki alanları doldurun:\n';
+
+        if (!ilSelect.value) {
+            valid = false;
+            errorMessage += '- İl\n';
+        }
+
+        if (!hastaneSelect.value) {
+            valid = false;
+            errorMessage += '- Hastane\n';
+        }
+
+        if (!poliklinikSelect.value) {
+            valid = false;
+            errorMessage += '- Poliklinik\n';
+        }
+
+        if (!hekimSelect.value) {
+            valid = false;
+            errorMessage += '- Doktor\n';
+        }
+
+        if (!randevuTarihiInput.value) {
+            valid = false;
+            errorMessage += '- Randevu Tarihi\n';
+        }
+
+        if (!saatInput.value) {
+            valid = false;
+            errorMessage += '- Randevu Saati\n';
+        }
+
+        if (!valid) {
+            alert(errorMessage);
+            event.preventDefault();
+        }
+    });
+});
 

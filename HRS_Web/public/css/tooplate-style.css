@@ -39,6 +39,18 @@ http://www.tooplate.com/view/2098-health
     background-color: #f5f5dc;
 }
 
+.appointment-item-profil {
+    border: 3px solid #ccc;
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 150%;
+    height: 230px;
+    background-color: #f5f5dc;
+}
+.bilgilendirme{
+    width: 150%;
+}
+
 
 /*---------------------------------------
    TYPOGRAPHY
@@ -379,6 +391,77 @@ http://www.tooplate.com/view/2098-health
 }
 
 .navbar-default .navbar-nav li.appointment-btn1 a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+.navbar-default .navbar-nav li.appointment-btn1 a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+.navbar-default .navbar-nav li.appointment-btn1 {
+    margin: 3px 0 0 20px;
+}
+
+.navbar-default .navbar-nav li.appointment-btn1 a {
+    background: red;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.navbar-default .navbar-nav li.appointment-btn1 a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+---
+
+.navbar-default .navbar-nav li.appointment-profil a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+.navbar-default .navbar-nav li.appointment-profil {
+    margin: 3px 0 0 20px;
+}
+
+.navbar-default .navbar-nav li.appointment-profil a {
+    background: red;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.navbar-default .navbar-nav li.appointment-profil a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+.navbar-default .navbar-nav li.appointment-profil a:hover {
+    background: #4267b2;
+    color: #ffffff !important;
+}
+
+.navbar-default .navbar-nav li.appointment-profil {
+    margin: 3px 0 0 20px;
+}
+
+.navbar-default .navbar-nav li.appointment-profil a {
+    background: cornflowerblue;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.navbar-default .navbar-nav li.appointment-profil a:hover {
     background: #4267b2;
     color: #ffffff !important;
 }

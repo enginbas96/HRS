@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ApiController;
 
 Route::post('giris',[ApiController::class,'login']);
-
 Route::post('randevuMobil', [ApiController::class, 'randevuFonksiyon']);
 Route::post('randevuAlMobil', [ApiController::class, 'randevuOlustur']);
+Route::post('kayitOlMobil', [ApiController::class, 'kayitFonksiyon']);
 
 
 Route::get('/A', [ApiController::class, 'ilCek']);

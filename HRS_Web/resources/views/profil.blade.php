@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Randevu Al | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
+    <title>Profilim | ABC Özel Sağlık Hizmetleri Randevu Sistemi</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -73,7 +73,6 @@
                         </ul>
                     </li>
                     <li><a href="{{route("iletisimSayfasi")}}" class="smoothScroll">İletişim</a></li>
-                    <li class="appointment-profil"><a href="{{route("profilSayfasi")}}">Profil</a></li>
                     <li class="appointment-btn"><a href="{{route("randevularSayfasi")}}">Randevularım</a></li>
                     <li class="appointment-btn1"><a href="{{route('cikis')}}">Çıkış Yap</a></li>
                 </ul>
@@ -83,46 +82,87 @@
     <section id="appointment" data-stellar-background-ratio="3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-
-                    <h2>Randevu Al</h2>
-                    <div style="margin-top: 20px;"></div>
-                    @if($errors->has('randevuMevcut'))
-                        <div style="color: red;" class="alert alert-danger">
-                            {{ $errors->first('randevuMevcut') }}
-                        </div>
-                    @endif
-                    <div style="margin-top: 10px;"></div>
-                    <form action="{{ route('randevuOlusturSayfasi') }}" method="POST">
-                        @csrf
-                        <div class="randevuAlForm">
-                            <label for="ilLabel">İl Seçiniz : </label>
-                            <select id="iller" name="il" class="form-control" readonly></select>
-                            <label for="hastaneLabel">Hastane Seçiniz : </label>
-                            <select id="hastaneler" name="hastane" class="form-control" readonly></select>
-                            <label for="polikliniklerLabel">Poliklinik Seçiniz : </label>
-                            <select id="poliklinikler" name="poliklinik" class="form-control" readonly></select>
-                            <label for="hekimLabel">Doktor Seçiniz : </label>
-                            <select id="hekimler" name="hekim" class="form-control" readonly></select>
-                            <label for="tarih" style="white-space: pre">Randevu Tarihi  :  </label>
-                            <input type="date" id="randevuTarihi" name="randevuTarihi" style="width: 150px; text-align: center">
-                            <div id="uyariMesaj"
-                                 style="color: red; font-size: 12px; margin-top: 5px; margin-bottom: 5px;"></div>
-                            <br>
-                            <label id="randevuSaatiLabel" for="randevuSaati">Randevu Saatleri </label>
-                            <div id="saatButonlari">
-                                <button type="button" class="saatButon" value="8" onclick="saatAl(this)">08:00</button>
-                                <button type="button" class="saatButon" value="9" onclick="saatAl(this)">09:00</button>
-                                <button type="button" class="saatButon" value="10" onclick="saatAl(this)">10:00</button>
-                                <button type="button" class="saatButon" value="11" onclick="saatAl(this)">11:00</button>
-                                <button type="button" class="saatButon" value="13" onclick="saatAl(this)">13:00</button>
-                                <button type="button" class="saatButon" value="14" onclick="saatAl(this)">14:00</button>
-                                <button type="button" class="saatButon" value="15" onclick="saatAl(this)">15:00</button>
-                                <button type="button" class="saatButon" value="16" onclick="saatAl(this)">16:00</button>
+                <div class="col-md-6 col-sm-6">
+                    <!-- CONTACT FORM HERE -->
+                    <section id="appointment" data-stellar-background-ratio="3">
+                        <div class="container">
+                            <div class="row" style="margin-top: 40px;">
+                                @if($kullanici->isEmpty())
+                                @else
+                                    @foreach($kullanici as $kullaniciBilgileri)
+                                        <div class="col-md-4">
+                                            <div class="appointment-item-profil">
+                                                <p><strong>Tc Kimlik Numarası : </strong> {{ $kullaniciBilgileri->tc }}
+                                                </p>
+                                                <p><strong>Ad Soyad
+                                                        : </strong> {{ $kullaniciBilgileri->ad }} {{ $kullaniciBilgileri->soyad  }}
+                                                </p>
+                                                <p><strong>Eposta Adersi : </strong> {{ $kullaniciBilgileri->eposta  }}
+                                                </p>
+                                                <p><strong>Doğum Yılı : </strong> {{ $kullaniciBilgileri->dogumyili }}
+                                                </p>
+                                                <p><strong>Cinsiyet : </strong> {{ $kullaniciBilgileri->cinsiyet }}</p>
+                                            </div>
+                                            <div class="bilgilendirme">
+                                                <p>Şifrenizi kimseyle paylaşmayın. Şifreniz, kişisel bilgilerinizi ve
+                                                    hesaplarınızı
+                                                    korumak için önemli bir güvenlik unsuru olduğundan, lütfen
+                                                    güvenliğiniz için
+                                                    şifrenizi hiç kimseyle paylaşmayın veya başkalarının erişimine izin
+                                                    vermeyin.
+                                                    Ayrıca, şifrenizi belirli aralıklarla güncelleyerek hesap
+                                                    güvenliğinizi
+                                                    artırabilirsiniz.</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
-                            <br>
-                            <input type="hidden" name ="saat" id ="saat" value="">
-                            <button type="submit" class="form-control" id="cf-submit" name="submit">Randevu Al</button>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <!-- CONTACT FORM HERE -->
+                    <form id="appointment-form" role="form" method="POST" action="{{route('profilSayfasi')}}"
+                          onsubmit="return kontrolEt();">
+                        @csrf
+                        <!-- SECTION TITLE -->
+                        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                            <div style="margin-top: 20px;"></div>
+                            @if($errors->has('basarili'))
+                                <div style="color: green; background: lightgreen" class="alert alert-danger">
+                                    {{ $errors->first('basarili') }}
+                                </div>
+                            @endif
+                            @if($errors->has('basarisiz'))
+                                <div style="color: red;" class="alert alert-danger">
+                                    {{ $errors->first('basarisiz') }}
+                                </div>
+                            @endif
+                            <div style="margin-top: 10px;"></div>
+                            <h2>Yeni Şifre Oluştur</h2>
+                        </div>
+                        <div class="deneme-form">
+                            <!-- TC ve şifre isteyen kutular -->
+                            <div class="form-group">
+                                <label for="passwordO">Eski Şifreniz</label>
+                                <input type="password" class="form-control" id="passwordO" name="passwordO"
+                                       placeholder="Kullandığınız şifrenizi giriniz." maxlength="32">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Yeni Şifreniz</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Yeni şifrenizi giriniz." maxlength="32">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordR">Yeni Şifreniz(Tekrar)</label>
+                                <input type="password" class="form-control" id="passwordR" name="passwordR"
+                                       placeholder="Yeni şifreniz tekrar." maxlength="32">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control" id="cf-submit" name="submit">Şifremi Değiştir
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -192,7 +232,7 @@
 <script src="js/smoothscroll.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
-<script src="js/randevuAlSayfasi.js" defer></script>
+<script src="js/profilJS.js" defer></script>
 </body>
 </html>
 

@@ -44,7 +44,26 @@ class AuthController extends Controller
             }
         }
     }
-
+    public function profilAyarları(Request $request){
+        if($request ->method() == 'GET'){
+            $userTC = auth()->user()->tc;
+            $kullanici = DB::table('hasta')
+                ->where('tc', $userTC)
+                ->get();
+            return view('profil', ['kullanici' => $kullanici]);
+        }
+        else if($request ->method() == 'POST'){
+            $userTC = auth()->user()->tc;
+            $data = $request->only('passwordO','password','passwordR');
+            $kullanici = DB::table('hasta')->where('tc', $userTC)->where('password', $data['passwordO'])->first();
+            if ($kullanici) {
+                DB::table('hasta')->where('tc', $userTC)->update(['password' => $data['password']]);
+                return back()->withErrors(['basarili' => 'Şifreniz başarıyla değiştirilmiştir.']);
+            } else {
+                return back()->withErrors(['basarisiz' => 'Eski şifreniz yanlış gibi görünüyor, kontrol edip tekrar deneyiniz.']);
+            }
+        }
+    }
     public function randevuFonksiyon(Request $request){
         if ($request->method() == 'GET') {
             $userTC = auth()->user()->tc;

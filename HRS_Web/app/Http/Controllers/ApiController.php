@@ -24,6 +24,18 @@ class ApiController extends Controller
         ], 401);
     }
 
+    public function kayitFonksiyon(Request $request)
+    {
+        $data = $request->only('tc', 'password', 'ad', 'soyad', 'eposta', 'dogumyili', 'cinsiyet');
+        $kullaniciVarMi = User::where('tc', $data['tc'])->first();
+        if (!$kullaniciVarMi) {
+            User::create($data);
+            return response()->json(['data' => $data], 200);
+        } else {
+            return response()->json(['success' => 'Bu TC kimlik numarasına ait kullanıcı zaten mevcut',], 200);
+        }
+    }
+
     public function randevuFonksiyon(Request $request)
     {
         $userTC = $request->only('tc');

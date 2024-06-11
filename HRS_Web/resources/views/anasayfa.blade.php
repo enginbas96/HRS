@@ -98,6 +98,7 @@
                         </ul>
                     </li>
                     <li><a href="{{route("iletisimSayfasi")}}" class="smoothScroll">İletişim</a></li>
+                    <li class="appointment-profil"><a href="{{route("profilSayfasi")}}">Profil</a></li>
                     <li class="appointment-btn"><a href="{{route("randevularSayfasi")}}">Randevularım</a></li>
                     <li class="appointment-btn1"><a href="{{route('cikis')}}">Çıkış Yap</a></li>
                 </ul>
